@@ -23,3 +23,5 @@ Hello netology!!!
 - Игнорировать конфигурационные файлы CLI
     - .terraformrc
     - terraform.rc
+
+new line
