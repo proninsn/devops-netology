@@ -141,4 +141,11 @@ services:
 ![img-04.01.JPG](images/img-04.01.JPG)
 ![img-04.02.JPG](images/img-04.02.JPG)
 ![img-04.03.JPG](images/img-04.03.JPG)
+![img-04.04.JPG](images/img-04.04.JPG)
+
+Файл compose.yaml отсутствует, и будет использован только docker-compose.yaml. Это связано с тем, что docker compose пытается найти оба файла, но приоритет отдается compose.yaml.
+
+![img-04.05.JPG](images/img-04.05.JPG)
+![img-04.06.JPG](images/img-04.06.JPG)
+![img-04.07.JPG](images/img-04.07.JPG)
 
