@@ -83,7 +83,7 @@ https://hub.docker.com/r/proninsn/custom-nginx
 
 ## Решение 4
 
-
+![img-03.JPG](images/img-03.JPG)
 
 ## Задача 5
 
@@ -135,4 +135,10 @@ services:
 ---
 
 ## Решение 5
+
+По умолчанию docker compose ищет файл с именем compose.yaml или docker-compose.yaml. Если оба файла присутствуют, приоритет отдается compose.yaml. В данном случае будет запущен файл compose.yaml, так как он имеет более высокий приоритет.
+
+![img-04.01.JPG](images/img-04.01.JPG)
+![img-04.02.JPG](images/img-04.02.JPG)
+![img-04.03.JPG](images/img-04.03.JPG)
 
