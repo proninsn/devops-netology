@@ -136,10 +136,11 @@ services:
 
 ## Решение 5
 
+![img-04.02.JPG](images/img-04.02.JPG)
+
 По умолчанию docker compose ищет файл с именем compose.yaml или docker-compose.yaml. Если оба файла присутствуют, приоритет отдается compose.yaml. В данном случае будет запущен файл compose.yaml, так как он имеет более высокий приоритет.
 
 ![img-04.01.JPG](images/img-04.01.JPG)
-![img-04.02.JPG](images/img-04.02.JPG)
 ![img-04.03.JPG](images/img-04.03.JPG)
 ![img-04.04.JPG](images/img-04.04.JPG)
 
