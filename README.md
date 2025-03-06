@@ -7,3 +7,4 @@
 ## [Виртуализация и контейнеризация](virt_hw)
 - [Введение в виртуализацию](virt_hw/virt-01.md)
 - [Оркестрация группой Docker контейнеров на примере Docker Compose](virt_hw/virt-03/virt-03.md)
+- [Практическое применение Docker](virt_hw/virt-04/virt-04.md)

@@ -46,7 +46,7 @@
 ## Решение 4
 
 ![img-05.03.JPG](images/img-05.03.JPG)
-[bash-скрипт](deploy.sh)
+[bash-скрипт](deploy.sh)  
 [fork-репозиторий](https://github.com/proninsn/shvirtd-example-python.git)
 
 ## Задача 6
