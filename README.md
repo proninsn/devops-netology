@@ -8,3 +8,6 @@
 - [Введение в виртуализацию](virt_hw/virt-01.md)
 - [Оркестрация группой Docker контейнеров на примере Docker Compose](virt_hw/virt-03/virt-03.md)
 - [Практическое применение Docker](virt_hw/virt-04/virt-04.md)
+
+## [Облачная инфраструктура. Terraform](ter_hw)
+- [Введение в Terraform](ter_hw-01/ter_hw-01.md)
