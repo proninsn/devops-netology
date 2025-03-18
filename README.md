@@ -10,4 +10,4 @@
 - [Практическое применение Docker](virt_hw/virt-04/virt-04.md)
 
 ## [Облачная инфраструктура. Terraform](ter_hw)
-- [Введение в Terraform](ter_hw-01/ter_hw-01.md)
+- [Введение в Terraform](ter_hw/ter_hw-01/ter_hw-01.md)
