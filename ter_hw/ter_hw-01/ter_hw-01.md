@@ -106,4 +106,6 @@ resource "docker_container" "nginx_container" {
 
 7. ![img-01.03](images/img-01.03.JPG) 
 
-8. Docker-образ nginx:latest не был удалён, потому что он не управляется Terraform. В предоставленном файле состояния (terraform.tfstate) отсутствуют какие-либо ресурсы, что подтверждает, что Terraform не знает об этом образе. Чтобы Terraform мог удалить образ, его необходимо объявить в конфигурации и добавить в состояние. 
+8. Потому что в коде отсутствует ключ  ```force remove``` со значением true.
+
+https://docs.comcloud.xyz/providers/kreuzwerker/docker/latest/docs/resources/image#optional
