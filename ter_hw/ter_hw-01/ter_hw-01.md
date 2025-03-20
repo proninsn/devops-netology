@@ -106,6 +106,8 @@ resource "docker_container" "nginx_container" {
 
 7. ![img-01.03](images/img-01.03.JPG) 
 
-8. Потому что в коде отсутствует ключ  ```force remove``` со значением true.
+8. Потому что в коде присутствует параметр  ```keep_locally``` со значением ```true```.
+
+```keep_locally``` (Boolean) If true, then the Docker image won't be deleted on destroy operation. If this is false, it will delete the image from the docker local storage on destroy operation.
 
 https://docs.comcloud.xyz/providers/kreuzwerker/docker/latest/docs/resources/image#optional
