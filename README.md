@@ -12,3 +12,4 @@
 ## [Облачная инфраструктура. Terraform](ter_hw)
 - [Введение в Terraform](ter_hw/ter_hw-01/ter_hw-01.md)
 - [Основы Terraform. Yandex Cloud](ter_hw/ter_hw-02/ter_hw-02.md)
+- [Управляющие конструкции в коде Terraform](ter_hw/ter_hw-03/ter_hw-03.md)
