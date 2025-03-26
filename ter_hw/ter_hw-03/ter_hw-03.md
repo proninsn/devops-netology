@@ -30,8 +30,8 @@ variable "each_vm" {
 
 ### Решение 2
 
-[count-vm.tf](count-vm.tf)
-[for_each-vm.tf][for_each-vm.tf]
+[count-vm.tf](count-vm.tf)  
+[for_each-vm.tf][for_each-vm.tf]  
 [variables.tf](variables.tf)
 
 ![img-03.02.JPG](images/img-03.02.JPG)
