@@ -1,19 +1,28 @@
-data "template_file" "inventory" {
-  template = file("inventory.tpl")
-  vars = {
-    webservers = join("\n", [
-      for vm in yandex_compute_instance.web : 
-      "${vm.name} ansible_host=${vm.network_interface.0.nat_ip_address} fqdn=${vm.fqdn}"
-    ]),
-    databases = join("\n", [
-      for name, vm in yandex_compute_instance.db : 
-      "${name} ansible_host=${vm.network_interface.0.nat_ip_address} fqdn=${vm.fqdn}"
-    ]),
-    storage = "storage ansible_host=${yandex_compute_instance.storage.network_interface.0.nat_ip_address} fqdn=${yandex_compute_instance.storage.fqdn}"
+locals {
+  inventory_data = {
+    webservers = [
+      for vm in yandex_compute_instance.web : {
+        name = vm.name,
+        ip   = vm.network_interface[0].nat_ip_address,
+        fqdn = vm.fqdn
+      }
+    ],
+    databases = [
+      for name, vm in yandex_compute_instance.db : {
+        name = name,
+        ip   = vm.network_interface[0].nat_ip_address,
+        fqdn = vm.fqdn
+      }
+    ],
+    storage = [{
+      name = yandex_compute_instance.storage.name,
+      ip   = yandex_compute_instance.storage.network_interface[0].nat_ip_address,
+      fqdn = yandex_compute_instance.storage.fqdn
+    }]
   }
 }
 
 resource "local_file" "inventory" {
-  content  = data.template_file.inventory.rendered
+  content  = templatefile("inventory.tpl", local.inventory_data)
   filename = "../ansible/inventory.ini"
 }

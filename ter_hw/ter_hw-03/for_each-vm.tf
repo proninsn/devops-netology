@@ -33,7 +33,7 @@ resource "yandex_compute_instance" "db" {
 
   boot_disk {
     initialize_params {
-      image_id = "fd81hgrcv6lsnkremf32" # Ubuntu 20.04 LTS
+      image_id = data.yandex_compute_image.ubuntu_image.id
       size     = each.value.disk_volume
     }
   }
