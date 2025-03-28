@@ -15,5 +15,5 @@
 - [Управляющие конструкции в коде Terraform](ter_hw/ter_hw-03/ter_hw-03.md)
 
 ## [Система управления конфигурациями](ansible_hw)
-- [Введение в Ansible](ansible_hw/ansible_hw-01/ansible_hw.md)
+- [Введение в Ansible](ansible_hw/ansible_hw-01/ansible_hw-01.md)
 
