@@ -61,3 +61,4 @@ Available tags for partial execution:
 
 ![img-ansible-02.03](images/img-ansible-02.03.JPG)
 
+![img-ansible-02.04](images/img-ansible-02.04.JPG)
