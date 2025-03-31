@@ -16,41 +16,28 @@
 ## Решение:
 
 ```markdown
-# ClickHouse and Vector Installation Playbook
+# Ansible Playbook for ClickHouse and Vector
 
-This playbook installs and configures ClickHouse database and Vector log collector on Ubuntu servers.
+This playbook installs and configures ClickHouse (via Docker) and Vector on Ubuntu systems.
 
-## Features
+## Playbook Parameters
 
-- Installs ClickHouse from official repositories
-- Creates a default database `logs`
-- Installs Vector from binary distribution
-- Configures Vector with basic stdin->stdout pipeline
-- Sets up Vector as a systemd service
+### ClickHouse
+- `clickhouse_version`: Version of ClickHouse to install (default: "22.3.3.44")
 
-## Variables
-
-Main variables are defined in `vars.yml`:
-
-- `clickhouse_version`: Version of ClickHouse to install
-- `clickhouse_packages`: List of ClickHouse packages to install
-
-Vector variables are defined in the playbook:
-
-- `vector_version`: Version of Vector to install
-- `vector_config_dir`: Directory for Vector configuration
+### Vector
+- `vector_version`: Version of Vector to install (default: "0.28.1")
+- `vector_config_dir`: Directory for Vector configuration files (default: "/etc/vector")
 
 ## Tags
 
-Available tags for partial execution:
+Available tags for selective execution:
+- `clickhouse`: Only execute ClickHouse tasks
+- `vector`: Only execute Vector tasks
 
-- `clickhouse`: Only install ClickHouse
-- `vector`: Only install Vector
+## Usage Examples
 
-## Usage
-
-1. Edit `prod.yml` with your server details
-2. Run the playbook:
+1. Run full playbook:
    ```bash
    ansible-playbook -i prod.yml site.yml
 ```
