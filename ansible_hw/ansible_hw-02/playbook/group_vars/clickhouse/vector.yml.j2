@@ -1,0 +1,10 @@
+sources:
+  example:
+    type: stdin
+
+sinks:
+  example:
+    type: console
+    inputs: [example]
+    encoding:
+      codec: json
