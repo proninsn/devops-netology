@@ -55,9 +55,9 @@ Available tags for partial execution:
    ansible-playbook -i prod.yml site.yml
 ```
 
-![img-ansible-02.01](images/img-ansible-02.01)
+![img-ansible-02.01](images/img-ansible-02.01.JPG)
 
-![img-ansible-02.02](images/img-ansible-02.02)
+![img-ansible-02.02](images/img-ansible-02.02.JPG)
 
-![img-ansible-02.03](images/img-ansible-02.03)
+![img-ansible-02.03](images/img-ansible-02.03.JPG)
 
