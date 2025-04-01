@@ -17,3 +17,4 @@
 ## [Система управления конфигурациями](ansible_hw)
 - [Введение в Ansible](ansible_hw/ansible_hw-01/ansible_hw-01.md)
 - [Работа с Playbook](ansible_hw/ansible_hw-02/ansible_hw-02.md)
+- [Работа с roles](ansible_hw/ansible_hw-02/ansible_hw-04.md)

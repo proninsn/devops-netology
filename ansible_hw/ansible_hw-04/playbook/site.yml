@@ -1,0 +1,90 @@
+---
+- name: Install ClickHouse with Docker
+  hosts: clickhouse
+  roles:
+    - clickhouse
+  tasks:
+    - name: Pull ClickHouse Docker image
+      ansible.builtin.docker_image:
+        name: clickhouse/clickhouse-server
+        tag: "{{ clickhouse_version }}"
+        source: pull
+
+    - name: Run ClickHouse container
+      ansible.builtin.docker_container:
+        name: clickhouse-server
+        image: clickhouse/clickhouse-server:{{ clickhouse_version }}
+        ports:
+          - "8123:8123"
+          - "9000:9000"
+        volumes:
+          - "clickhouse_data:/var/lib/clickhouse"
+        restart_policy: unless-stopped
+        state: started
+
+    - name: Wait for ClickHouse to start
+      ansible.builtin.wait_for:
+        port: 8123
+        delay: 10
+        timeout: 60
+
+    - name: Create database
+      ansible.builtin.command: "docker exec clickhouse-server clickhouse-client -q 'create database if not exists logs;'"
+      register: create_db
+      failed_when: create_db.rc != 0 and create_db.rc != 82
+      changed_when: create_db.rc == 0
+
+- name: Install and configure Vector with Docker
+  hosts: clickhouse
+  roles:
+    - vector
+  vars:
+    vector_version: "0.28.1"
+    vector_config_dir: "/etc/vector"
+  handlers:
+    - name: Restart Vector container
+      become: true
+      ansible.builtin.docker_container:
+        name: vector
+        image: timberio/vector:{{ vector_version }}-alpine
+        state: started
+        restart_policy: unless-stopped
+        volumes:
+          - "{{ vector_config_dir }}/vector.yml:/etc/vector/vector.yml:ro"
+          - "/var/log:/var/log:ro"
+        ports:
+          - "8686:8686"  # Vector's metrics port
+  tasks:
+    - name: Create Vector config directory
+      become: true
+      ansible.builtin.file:
+        path: "{{ vector_config_dir }}"
+        state: directory
+        mode: '0755'
+
+    - name: Pull Vector Docker image
+      ansible.builtin.docker_image:
+        name: timberio/vector
+        tag: "{{ vector_version }}-alpine"
+        source: pull
+
+    - name: Configure Vector
+      become: true
+      ansible.builtin.template:
+        src: vector.yml.j2
+        dest: "{{ vector_config_dir }}/vector.yml"
+        mode: '0644'
+      notify: Restart Vector container
+
+    - name: Ensure Vector container is running
+      become: true
+      ansible.builtin.docker_container:
+        name: vector
+        image: timberio/vector:{{ vector_version }}-alpine
+        state: started
+        restart_policy: unless-stopped
+        volumes:
+          - "{{ vector_config_dir }}/vector.yml:/etc/vector/vector.yml:ro"
+          - "/var/log:/var/log:ro"
+        ports:
+          - "8686:8686"

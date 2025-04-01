@@ -1,0 +1,15 @@
+sources:
+  example:
+    type: file
+    include: ["/var/log/*.log"]
+    read_from: beginning
+
+sinks:
+  clickhouse:
+    type: clickhouse
+    inputs: ["example"]
+    host: "127.0.0.1"
+    port: 8123
+    database: "logs"
+    table: "logs"
+    skip_unknown_fields: true
